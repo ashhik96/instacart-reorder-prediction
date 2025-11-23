@@ -8,6 +8,9 @@ A machine learning system that predicts which products customers will reorder, e
 
 Explore the model insights, customer segments, and product recommendations in real-time!
 
+
+![Preview](images/Executive_Overview.png)
+
 ---
 
 ## 🎯 Project Overview
