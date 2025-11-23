@@ -19,15 +19,24 @@ GDRIVE_FILES = {
 
 # Function to download files from Google Drive if needed
 def ensure_data_files():
-    data_dir = 'data/processed'
-    os.makedirs(data_dir, exist_ok=True)
+    """Download files from Google Drive if they don't exist locally"""
+    os.makedirs('data/processed', exist_ok=True)
     
-    for filename, file_id in GDRIVE_FILES.items():
-        filepath = os.path.join(data_dir, filename)
+    # Use export URLs for Google Sheets files
+    export_urls = {
+        'predictions_with_details.csv': 'https://docs.google.com/spreadsheets/d/1ape34BYC3fMfnDqCOPE5i8SM687IpQcD/export?format=csv',
+        'department_reorder_rates.csv': 'https://docs.google.com/spreadsheets/d/18pDHrwkLO2EhSeZJRex_YqmJJrsQn_CN/export?format=csv',
+        'product_reorder_rates.csv': 'https://docs.google.com/spreadsheets/d/1kMfYPfgUg-7-iJv5JKShPLq38ZewM4L6/export?format=csv',
+        'user_segments.csv': 'https://docs.google.com/spreadsheets/d/1oOLBLlqame7P6SudMn7BRs2dw3SCkL29/export?format=csv',
+        'segment_recommendations.csv': 'https://docs.google.com/spreadsheets/d/1d1230vkstrXnf12hWnhTG2bTlDLsJ4NRB/export?format=csv'
+    }
+    
+    for filename, url in export_urls.items():
+        filepath = f'data/processed/{filename}'
         if not os.path.exists(filepath):
-            with st.spinner(f'Downloading {filename}... (first time only)'):
-                url = f'https://drive.google.com/uc?id={file_id}'
-                gdown.download(url, filepath, quiet=False)
+            print(f"Downloading {filename}...")
+            gdown.download(url, filepath, quiet=False, fuzzy=True)
+            print(f"Downloaded {filename}")
 
 # Ensure data files exist before loading
 ensure_data_files()
