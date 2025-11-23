@@ -2,9 +2,35 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import os
+import gdown
 
 # Page config
 st.set_page_config(page_title="Instacart Reorder Intelligence", layout="wide", page_icon="🛒")
+
+# Google Drive file IDs
+GDRIVE_FILES = {
+    'predictions_with_details.csv': '1OLP8ilx9jqu9zn1-AW0u1HBIMs7HsCuU',
+    'department_reorder_rates.csv': '1lUE2i0Ij2_UG5jYe5wEj6F4KSYwNoiOD',
+    'product_reorder_rates.csv': '1-5PDSGW38IXesi7cj9uTZzAMixhGfgO2',
+    'user_segments.csv': '156gXGj4rk0360Jv0_DmATTSt4j5X2xp1',
+    'segment_recommendations.csv': '1lUQH-A6n2tce5YB5xZ906WIf19Kz2ygS'
+}
+
+# Function to download files from Google Drive if needed
+def ensure_data_files():
+    data_dir = 'data/processed'
+    os.makedirs(data_dir, exist_ok=True)
+    
+    for filename, file_id in GDRIVE_FILES.items():
+        filepath = os.path.join(data_dir, filename)
+        if not os.path.exists(filepath):
+            with st.spinner(f'Downloading {filename}... (first time only)'):
+                url = f'https://drive.google.com/uc?id={file_id}'
+                gdown.download(url, filepath, quiet=False)
+
+# Ensure data files exist before loading
+ensure_data_files()
 
 # Load data
 @st.cache_data
