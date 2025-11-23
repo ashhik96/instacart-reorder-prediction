@@ -22,20 +22,20 @@ def ensure_data_files():
     """Download files from Google Drive if they don't exist locally"""
     os.makedirs('data/processed', exist_ok=True)
     
-    # Use export URLs for Google Sheets files
-    export_urls = {
-        'predictions_with_details.csv': 'https://docs.google.com/spreadsheets/d/1ape34BYC3fMfnDqCOPE5i8SM687IpQcD/export?format=csv',
-        'department_reorder_rates.csv': 'https://docs.google.com/spreadsheets/d/18pDHrwkLO2EhSeZJRex_YqmJJrsQn_CN/export?format=csv',
-        'product_reorder_rates.csv': 'https://docs.google.com/spreadsheets/d/1kMfYPfgUg-7-iJv5JKShPLq38ZewM4L6/export?format=csv',
-        'user_segments.csv': 'https://docs.google.com/spreadsheets/d/1oOLBLlqame7P6SudMn7BRs2dw3SCkL29/export?format=csv',
-        'segment_recommendations.csv': 'https://docs.google.com/spreadsheets/d/1d1230vkstrXnf12hWnhTG2bTlDLsJ4NRB/export?format=csv'
+    GDRIVE_FILES = {
+        'predictions_with_details.csv': '1ape34BYC3fMfnDqCOPE5i8SM687IpQcD',
+        'department_reorder_rates.csv': '18pDHrwkLO2EhSeZJRex_YqmJJrsQn_CN',
+        'product_reorder_rates.csv': '1kMfYPfgUg-7-iJv5JKShPLq38ZewM4L6',
+        'user_segments.csv': '1oOLBLlqame7P6SudMn7BRs2dw3SCkL29',
+        'segment_recommendations.csv': '1d1230vkstrXnf12hWnhTG2bTlDLsJ4NRB'
     }
     
-    for filename, url in export_urls.items():
+    for filename, file_id in GDRIVE_FILES.items():
         filepath = f'data/processed/{filename}'
         if not os.path.exists(filepath):
             print(f"Downloading {filename}...")
-            gdown.download(url, filepath, quiet=False, fuzzy=True)
+            url = f'https://drive.google.com/uc?export=download&id={file_id}'
+            gdown.download(url, filepath, quiet=False)
             print(f"Downloaded {filename}")
 
 # Ensure data files exist before loading
