@@ -8,35 +8,33 @@ import gdown
 # Page config
 st.set_page_config(page_title="Instacart Reorder Intelligence", layout="wide", page_icon="🛒")
 
-# Google Drive file IDs
-GDRIVE_FILES = {
-    'predictions_with_details.csv': '1ape34BYC3fMfnDqCOPE5i8SM687IpQcD',
-    'department_reorder_rates.csv': '18pDHrwkLO2EhSeZJRex_YqmJJrsQn_CN',
-    'product_reorder_rates.csv': '1kMfYPfgUg-7-iJv5JKShPLq38ZewM4L6',
-    'user_segments.csv': '1oOLBLlqame7P6SudMn7BRs2dw3SCkL29',
-    'segment_recommendations.csv': '1d1230vkstrXnf12hWnhTG2bTlDLsJ4NRB'
-}
-
-# Function to download files from Google Drive if needed
+# Function to download files from Google Drive and Dropbox if needed
 def ensure_data_files():
-    """Download files from Google Drive if they don't exist locally"""
+    """Download files from Google Drive and Dropbox if they don't exist locally"""
     os.makedirs('data/processed', exist_ok=True)
     
-    GDRIVE_FILES = {
-        'predictions_with_details.csv': '1ape34BYC3fMfnDqCOPE5i8SM687IpQcD',
+    # Google Drive files (small ones)
+    gdrive_files = {
         'department_reorder_rates.csv': '18pDHrwkLO2EhSeZJRex_YqmJJrsQn_CN',
         'product_reorder_rates.csv': '1kMfYPfgUg-7-iJv5JKShPLq38ZewM4L6',
         'user_segments.csv': '1oOLBLlqame7P6SudMn7BRs2dw3SCkL29',
         'segment_recommendations.csv': '1d1230vkstrXnf12hWnhTG2bTlDLsJ4NRB'
     }
     
-    for filename, file_id in GDRIVE_FILES.items():
+    # Download from Google Drive
+    for filename, file_id in gdrive_files.items():
         filepath = f'data/processed/{filename}'
         if not os.path.exists(filepath):
-            print(f"Downloading {filename}...")
+            print(f"Downloading {filename} from Google Drive...")
             url = f'https://drive.google.com/uc?export=download&id={file_id}'
             gdown.download(url, filepath, quiet=False)
-            print(f"Downloaded {filename}")
+    
+    # Download large file from Dropbox
+    predictions_file = 'data/processed/predictions_with_details.csv'
+    if not os.path.exists(predictions_file):
+        print(f"Downloading predictions from Dropbox...")
+        dropbox_url = 'https://www.dropbox.com/scl/fi/owamgq27adumwmhmfxoa0/predictions_with_details.csv?rlkey=lqohsohakw6uk5h3c9n2fsvnu&st=w3yuytgw&dl=1'
+        gdown.download(dropbox_url, predictions_file, quiet=False, fuzzy=True)
 
 # Ensure data files exist before loading
 ensure_data_files()
@@ -143,11 +141,6 @@ if page == "📊 Executive Overview":
 elif page == "🎯 Product Recommendations":
     st.title("🎯 Product Recommendation Engine")
     st.write("Enter a customer ID to generate personalized product recommendations based on their purchase history and predicted reorder probabilities.")
-    
-    # Debug: Check column names
-    if 'user_id' not in predictions.columns:
-        st.error(f"Available columns: {predictions.columns.tolist()}")
-        st.stop()
     
     valid_users = sorted(predictions['user_id'].unique())
     
