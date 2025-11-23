@@ -1,0 +1,17 @@
+shopping_frequency,loyalty,user_count,avg_basket_size,avg_products_tried
+Infrequent (3-5),Exploratory (<30%),23661,9.79,36.74
+Infrequent (3-5),Mixed (30-50%),10640,10.43,43.03
+Infrequent (3-5),Loyal (50-70%),1768,8.23,36.08
+Infrequent (3-5),Very Loyal (70%+),151,2.41,11.28
+Moderate (6-10),Exploratory (<30%),10525,8.65,63.1
+Moderate (6-10),Mixed (30-50%),15401,10.49,81.22
+Moderate (6-10),Loyal (50-70%),6620,10.79,88.02
+Moderate (6-10),Very Loyal (70%+),689,6.64,57.26
+Frequent (11-20),Exploratory (<30%),2824,7.52,100.74
+Frequent (11-20),Mixed (30-50%),11513,9.71,138.09
+Frequent (11-20),Loyal (50-70%),12426,11.14,167.92
+Frequent (11-20),Very Loyal (70%+),2554,9.65,155.66
+Very Frequent (21+),Exploratory (<30%),314,6.09,155.23
+Very Frequent (21+),Mixed (30-50%),3857,8.24,236.96
+Very Frequent (21+),Loyal (50-70%),13930,10.09,349.75
+Very Frequent (21+),Very Loyal (70%+),12394,11.24,523.49

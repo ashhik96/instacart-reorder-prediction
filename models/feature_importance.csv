@@ -1,0 +1,15 @@
+feature,importance
+up_orders_since_last,21436356.61517334
+up_order_count,6780013.956680298
+product_reorder_probability,1784469.665802002
+user_total_orders,1383812.7827453613
+up_reorder_count,516519.6667175293
+product_total_reorders,418791.6233215332
+user_reorder_rate,394994.2837371826
+product_unique_users,160185.3067626953
+product_total_purchases,97184.07316589355
+user_avg_days_between_orders,79963.5288848877
+user_avg_basket_size,38318.40676879883
+user_total_products,16324.263900756836
+user_total_reorders,2930.3609619140625
+up_reorder_rate,0.0

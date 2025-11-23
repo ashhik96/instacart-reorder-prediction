@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Data files (too large for git)
+data/raw/
+data/processed/train_features.csv
+data/processed/test_features.csv
+data/processed/test_predictions.csv
+data/processed/predictions_with_details.csv
+
+# Keep small processed files for local testing
+# data/processed/department_reorder_rates.csv
+# data/processed/product_reorder_rates.csv
+# data/processed/user_segments.csv
+# data/processed/segment_recommendations.csv
+
+# Models
+models/*.pkl
+models/*.joblib
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
