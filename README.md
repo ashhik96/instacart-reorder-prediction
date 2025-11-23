@@ -2,7 +2,13 @@
 
 A machine learning system that predicts which products customers will reorder, enabling personalized marketing and optimized inventory management.
 
-![Executive Overview](images/Executive_Overview.png)
+## 🚀 Live Dashboard
+
+**[Click here to access the interactive Streamlit dashboard](https://instacart-reorder-prediction-j4qnxlunyx2yax9dcrea6a.streamlit.app/)**
+
+Explore the model insights, customer segments, and product recommendations in real-time!
+
+---
 
 ## 🎯 Project Overview
 
