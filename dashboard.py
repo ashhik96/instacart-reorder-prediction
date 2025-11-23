@@ -10,11 +10,11 @@ st.set_page_config(page_title="Instacart Reorder Intelligence", layout="wide", p
 
 # Google Drive file IDs
 GDRIVE_FILES = {
-    'predictions_with_details.csv': '1OLP8ilx9jqu9zn1-AW0u1HBIMs7HsCuU',
-    'department_reorder_rates.csv': '1lUE2i0Ij2_UG5jYe5wEj6F4KSYwNoiOD',
-    'product_reorder_rates.csv': '1-5PDSGW38IXesi7cj9uTZzAMixhGfgO2',
-    'user_segments.csv': '156gXGj4rk0360Jv0_DmATTSt4j5X2xp1',
-    'segment_recommendations.csv': '1lUQH-A6n2tce5YB5xZ906WIf19Kz2ygS'
+    'predictions_with_details.csv': '1ape34BYC3fMfnDqCOPE5i8SM687IpQcD',
+    'department_reorder_rates.csv': '18pDHrwkLO2EhSeZJRex_YqmJJrsQn_CN',
+    'product_reorder_rates.csv': '1kMfYPfgUg-7-iJv5JKShPLq38ZewM4L6',
+    'user_segments.csv': '1oOLBLlqame7P6SudMn7BRs2dw3SCkL29',
+    'segment_recommendations.csv': '1d1230vkstrXnf12hWnhTG2bTlDLsJ4NRB'
 }
 
 # Function to download files from Google Drive if needed
