@@ -142,10 +142,13 @@ if page == "📊 Executive Overview":
 # Page 2: Product Recommendations
 elif page == "🎯 Product Recommendations":
     st.title("🎯 Product Recommendation Engine")
-    st.markdown("*Enter a customer ID to generate personalized product recommendations based on their purchase history and predicted reorder probabilities*")
-    st.markdown("")
+    st.write("Enter a customer ID to generate personalized product recommendations based on their purchase history and predicted reorder probabilities.")
     
-    # Get list of valid user IDs
+    # Debug: Check column names
+    if 'user_id' not in predictions.columns:
+        st.error(f"Available columns: {predictions.columns.tolist()}")
+        st.stop()
+    
     valid_users = sorted(predictions['user_id'].unique())
     
     col1, col2 = st.columns([1, 3])
